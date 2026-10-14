@@ -1,0 +1,25 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: CCM-ServiceRegistry
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 3000
+    response-cache-update-interval-ms: 3000
+
+logging:
+  level:
+    root: INFO
+    com.ccm.registry: INFO
+    com.netflix.discovery: INFO
+log:
+  path: ../logs
