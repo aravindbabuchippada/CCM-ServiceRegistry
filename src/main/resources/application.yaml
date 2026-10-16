@@ -9,12 +9,13 @@ eureka:
   instance:
     hostname: localhost
   client:
-    register-with-eureka: false
-    fetch-registry: false
+    register-with-eureka: false               # Registry doesn't register itself as a client
+    fetch-registry: false                     # Registry doesn't fetch its own registry copy (standalone, single node)
   server:
-    enable-self-preservation: false
-    eviction-interval-timer-in-ms: 3000
-    response-cache-update-interval-ms: 3000
+    enable-self-preservation: false           # Evict expired instances even if many heartbeats are missed (dev only; keep true in prod)
+    eviction-interval-timer-in-ms: 3000       # How often (ms) the registry checks for expired leases
+    response-cache-update-interval-ms: 3000   # Refresh interval (ms) of the read-only response cache (ignored while it is disabled)
+    use-read-only-response-cache: false       # clients read the live registry, not a 30s-stale cache
 
 logging:
   level:
